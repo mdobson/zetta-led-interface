@@ -22,31 +22,19 @@ LED.prototype.init = function(config){
     .when('off', { allow: ['turn-on'] })
     .map('turn-on', function(cb) {
       self._io.on(function(err) {
-        if(cb) {
-          if(err) {
-            cb(err);
-          } else {
-            cb();
-          }
+        if(err) {
+          cb(err);
         } else {
-          if(err) {
-            self.log(err);
-          }
+          cb();
         }
       });
     })
     .map('turn-off', function(cb) {
       self._io.off(function(err) {
-         if(cb) {
-          if(err) {
-            cb(err);
-          } else {
-            cb();
-          }
+        if(err) {
+          cb(err)
         } else {
-          if(err) {
-            self.log(err);
-          }
+          cb();
         }
       });
     });
